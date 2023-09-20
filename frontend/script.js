@@ -15,5 +15,6 @@ btn.addEventListener('click',async()=>{
         },
         body: JSON.stringify(body),
       })
-      console.log(response)
+      const res=await response.json();
+      alert(res.message);
 })

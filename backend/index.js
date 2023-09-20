@@ -60,17 +60,9 @@ app.post('/submit', async (req, res) => {
     })
     console.log(metaData.data)
 
-//   // Load the Google Sheet
-//   await doc.loadInfo();
-
-//   // Select the first sheet
-//   const sheet = doc.sheetsByIndex[0];
-
-//   // Append the form data to the Google Sheet
-//   await sheet.addRow({ Name: name, Email: email, Age: age });
 
   // Send a confirmation message
-  res.send('Form submitted successfully!');
+  res.json({message:'Form submitted successfully!'});
 });
 
 // Start the server
