@@ -10,14 +10,12 @@ const {google} =require('googleapis')
 const app = express();
 
 const port = 3000;
-// const private_key_id= "85694586835bf08eddbf1c6422ba3d8033a48a1d";
 const spreadsheetId ='1d0YzhmjsrCOR8nvWucAMHiI_1vTwBES4URsB0nZfExg';
-// const client_email= "sheets@banded-badge-247716.iam.gserviceaccount.com";
 
 
 // Enable CORS for all routes
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*'); // Change '*' to the specific origin(s) you want to allow
+    res.header('Access-Control-Allow-Origin', '*'); 
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
@@ -27,15 +25,11 @@ app.use((req, res, next) => {
     app.use(express.urlencoded({
         extended: true
     }));
-// Serve the HTML form
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
+
 
 // Handle form submission
 app.post('/submit', async (req, res) => {
   const { name, email, age } = req.body;
-    console.log("name",name,"email",email,"age",age);
   // Authenticate with Google Sheets using your credentials
 
   const auth = new google.auth.GoogleAuth({
@@ -58,7 +52,6 @@ app.post('/submit', async (req, res) => {
         }
         
     })
-    console.log(metaData.data)
 
 
   // Send a confirmation message
